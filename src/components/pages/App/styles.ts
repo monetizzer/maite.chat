@@ -47,6 +47,13 @@ export const GlobalStyle = createGlobalStyle`
 		list-style: none;
 	}
 
+	.MuiPaper-root {
+		background: ${COLORS.secondary};
+		color: ${COLORS.firstText};
+		width: 100vw;
+		max-width: 28.5rem;
+	}
+
 	@media (max-width: 768px) {
 		html {
 			font-size: 60%;

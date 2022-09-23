@@ -5,9 +5,13 @@ export const COLORS = {
 	vividPrimary: "#01D2CE",
 	secondary: "#2C2F33",
 	background: "#23272A",
+	footer: "#171A1C",
 	firstText: "#FFFFFF",
+	secondText: "#FFFFFFCC",
 	outlinePrimary: "#01D2CE",
 	outlineSecondary: "#000000",
+	shadow: "#0000004D",
 	link: "#01D2CE",
 	button: "#01D2CE",
+	buttonSecondary: "#2C2F33",
 };

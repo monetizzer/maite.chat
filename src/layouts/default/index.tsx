@@ -1,4 +1,5 @@
-import { PageContainer } from "components/PageContainer";
+import { Footer } from "components/Footer";
+import { Header } from "components/Header";
 import type { ReactNode } from "react";
 
 interface Props {
@@ -6,5 +7,9 @@ interface Props {
 }
 
 export const DefaultLayout: FC<Props> = ({ children }) => (
-	<PageContainer>{children}</PageContainer>
+	<>
+		<Header />
+		{children}
+		<Footer />
+	</>
 );

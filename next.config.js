@@ -11,6 +11,9 @@ const nextConfig = {
 	typescript: {
 		ignoreBuildErrors: true,
 	},
+	images: {
+		loader: "custom",
+	},
 };
 
 module.exports = nextConfig;
