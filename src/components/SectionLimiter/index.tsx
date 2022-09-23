@@ -6,7 +6,7 @@ interface Props {
 	children: ReactNode;
 }
 
-export const PageContainer: FC<Props> = ({ children }) => (
+export const SectionLimiter: FC<Props> = ({ children }) => (
 	<Container>
 		<Content>{children}</Content>
 	</Container>
