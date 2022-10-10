@@ -2,18 +2,23 @@
 
 ## O que precisamos?
 
-Um dashboard bem simples, onde para acessa-lo seja obrigatório fazer login com o discord, e depois desse login exista apenas a criacao do produto.
+- Um dashboard bem simples, para vendedoras e compradores
+- Esse dash terá 3 pages:
+  - [VENDEDORA] Criacao de produto
+  - [VENDEDORA] Vendas em progresso
+  - [cCOMPRADOR] Compras feitas
+- Para acessar o dash, é necessário fazer login via magic link.
 
 ## Como será o fluxo?
 
-- A pessoa acessa o site
-- Caso ela n esteja logada (um JWT salvo no localStorage), redireciona a pessoa pro login do discord
-- Depois do login, a pessoa vai ser redirecionada para o site, que vai pegar o `code` que o discord enviou no query params, e fazer uma request pra api (rota NAO ESTÁ DEFINIDA, criar um mock pra isso.)
-- A API vai retornar um `accessToken` e um `refreshToken`, deverá ser implementada uma logica de dar refresh no token.
-- Depois de logada, salvar esses token no localStorage
-- Depois disso, o front devefazer uma request para o backend para pegar a **LOJA** da pessoa logada.
+- A pessoa acessa o site, esse acesso será sempre feito atraves da rota `/magic-link`, com os parametros:
+  - `token`: O token para ser trocado pelo JWT de acesso da pessoa
+  - `redirect`: A url para que a pessoa seja redirecionada depois de fazer o ligin
+- Esse JWT deve ser válido apenas **durante a sessao do usuário**, e nao deve ser salvo no localStorage, deve permanecer apenas em memória.
+- Caso a pessoa seja redirecionada para a área das vendedoras, deverá ser feita uma request para o back, para pegar a **LOJA** da pessoa usando o `accountId` que foi retornado na rota para trocar o `token` pelo `accessToken` (JWT).
 - Caso ela nao tenha uma loja, exibir uma msg de erro e travar ali
-- Caso ela tenha uma loja, exibir o formulário de criacao de produto
+- Caso ela tenha uma loja, econtinuar o fluxo
+  - Dependendo da pag q ele foi redirecionado, deverá exibir ou o formulario pra criar um produto, ou a pag de vendas em progresso
 
 ## Fluxo de criacao de produto
 
@@ -213,3 +218,7 @@ O `deliveryMethod` vai variar conforme o `type` do produto.
 - O upload consiste em 2 etapas:
   - Primeiro é feita uma chamada para a API, onde é enviado o ID do produto. Esse chamada retornará um `url`
   - Com o `url` retornado, será feita uma request `POST`, enviando a mídia no formato multipart-form
+
+## Vendas/Compras em progresso
+
+- Uma listagem das vendas em progresso
